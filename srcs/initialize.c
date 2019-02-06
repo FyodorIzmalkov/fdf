@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/06 18:42:05 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/06 23:22:30 by lsandor-         ###   ########.fr       */
+/*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
+/*   Updated: 2019/02/06 23:44:58 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-int	main(int argc, char **argv)
+void	ft_initialize_fdf(t_fdf *fdf)
 {
-	int	fd;
-	t_list *lst;
-	t_fdf	fdf;
-
-	ft_display_error(argc != 2, "Error. Usage: ./fdf input_filename");
-	fd = open(argv[1], O_RDONLY);
-	ft_display_error((fd < 0), "Error. Invalid file name.");
-	ft_initialize_fdf(&fdf);
-	ft_read_map(fd, &lst, &fdf);
-	return (0);
+	ft_display_error(!(fdf->options = ft_memmaloc(sizeof(t_options))), 
+			"Malloc allocation error.");
+	fdf->options->min = 2147483647;
+	fdf->options->max = -2147483648;
+	wd = -1;
 }
