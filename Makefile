@@ -6,36 +6,40 @@
 #    By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 12:40:45 by lsandor-          #+#    #+#              #
-#    Updated: 2019/02/06 18:23:09 by lsandor-         ###   ########.fr        #
+#    Updated: 2019/02/06 22:11:46 by lsandor-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
+
 CC = gcc
-FLAGS = -Wall -Wextra -Werror -g -O3
-LIBRARIES = -lmlx -lm -lft -L $(LIBFT_DIRECTORY) $(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
-INCLUDES = -I $(HEADERS_DIRECTORY) -I $(LIBFT_HEADERS) -I $(MINILIBX_HEADERS)
+FLAGS = -Wall -Werror -Wextra -O3
+LIBRARIES = -lmlx -lm -lft -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
+INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 
-LIBFT = $(LIBFT_DIRECTORY) libft.a
+LIBFT = $(LIBFT_DIRECTORY)libft.a
 LIBFT_DIRECTORY = ./libft/
-LIBFT_HEADERS = $(LIBFT_DIRECTORY) includes/
+LIBFT_HEADERS = $(LIBFT_DIRECTORY)includes/
 
-MINILIBX = $(MINILIBX_DIRECTORY) libmlx.a
+MINILIBX = $(MINILIBX_DIRECTORY)libmlx.a
 MINILIBX_DIRECTORY = ./minilibx_macos/
 MINILIBX_HEADERS = $(MINILIBX_DIRECTORY)
 
-HEADERS_LIST = fdf.h
+HEADERS_LIST = fdf.h\
 HEADERS_DIRECTORY = ./includes/
 HEADERS = $(addprefix $(HEADERS_DIRECTORY), $(HEADERS_LIST))
 
-SRCS_DIRECTORY = srcs/
-SRCS_LIST = main.c\
+SOURCES_DIRECTORY = ./srcs/
+SOURCES_LIST = main.c\
+			   utilities.c\
 
-SRCS = $(addprefix $(SRCS_DIRECTORY), $(SRCS_LIST))
+SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 
-OBJS_DIRECTORY = objects/
-OBJS_LIST = $(patsubst %.c, %.o, $(SRCS_LIST))
-OBJS = $(addprefix $(OBJS_DIRECTORY), $(OBJS_LIST))
+OBJECTS_DIRECTORY = objects/
+OBJECTS_LIST = $(patsubst %.c, %.o, $(SOURCES_LIST))
+OBJECTS	= $(addprefix $(OBJECTS_DIRECTORY), $(OBJECTS_LIST))
+
+# COLORS
 
 GREEN = \033[0;32m
 RED = \033[0;31m
@@ -45,16 +49,16 @@ RESET = \033[0m
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(MINILIBX) $(OBJS_DIRECTORY) $(OBJS)
-		@ $(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJS) -o $(NAME)
-		@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
-		@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
+$(NAME): $(LIBFT) $(MINILIBX) $(OBJECTS_DIRECTORY) $(OBJECTS)
+	@$(CC) $(FLAGS) $(LIBRARIES) $(INCLUDES) $(OBJECTS) -o $(NAME)
+	@echo "\n$(NAME): $(GREEN)object files were created$(RESET)"
+	@echo "$(NAME): $(GREEN)$(NAME) was created$(RESET)"
 
-$(OBJS_DIRECTORY): 
-	@mkdir -p $(OBJS_DIRECTORY)
+$(OBJECTS_DIRECTORY):
+	@mkdir -p $(OBJECTS_DIRECTORY)
 	@echo "$(NAME): $(GREEN)$(OBJECTS_DIRECTORY) was created$(RESET)"
 
-$(OBJS_DIRECTORY)%.o : $(SRCS_DIRECTORY)%.c $(HEADERS)
+$(OBJECTS_DIRECTORY)%.o : $(SOURCES_DIRECTORY)%.c $(HEADERS)
 	@$(CC) $(FLAGS) -c $(INCLUDES) $< -o $@
 	@echo "$(GREEN).$(RESET)\c"
 
