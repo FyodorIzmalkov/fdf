@@ -6,7 +6,7 @@
 #    By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 17:06:36 by lsandor-          #+#    #+#              #
-#    Updated: 2019/02/06 22:26:17 by lsandor-         ###   ########.fr        #
+#    Updated: 2019/02/06 22:28:23 by lsandor-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -85,7 +85,7 @@ OBJ = $(SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME):
-		gcc -c $(GCCFLAGS) $(SRCS) -I.
+		gcc -c $(GCCFLAGS) $(SRCS) -I ./includes/
 		ar rc $(NAME) $(OBJ)
 		ranlib $(NAME)
 

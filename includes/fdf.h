@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/06 20:51:40 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/06 22:33:48 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,7 @@
 # include <stdio.h>
 # include <errno.h>
 # include <mlx.h>
-
-typedef struct	s_list
-{
-	void	*data;
-	size_t	content_size;
-	struct s_list	*next;
-}				t_list;
+# include "libft.h"
 
 
 // utilities.c
