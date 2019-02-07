@@ -6,7 +6,7 @@
 #    By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 12:40:45 by lsandor-          #+#    #+#              #
-#    Updated: 2019/02/07 15:55:04 by lsandor-         ###   ########.fr        #
+#    Updated: 2019/02/07 18:12:57 by lsandor-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,8 @@ SOURCES_LIST = main.c\
 			   utilities.c\
 			   initialize.c\
 			   map_reader.c\
+			   image.c\
+			   print_map.c\
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

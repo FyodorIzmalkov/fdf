@@ -6,11 +6,24 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 23:22:38 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 15:55:44 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/07 18:42:58 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static	int		ft_read_color(char *str, t_fdf *fdf)
+{
+	int color;
+
+	color = 0xFFFFFF;
+	if (str)
+	{
+		color = ft_atoi_base(++str, 16);
+		fdf->options->coloured = 1;
+	}
+	return (color);
+}
 
 static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
 {
@@ -30,6 +43,7 @@ static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
 			fdf->options->max = pixel.z;
 		if (pixel.z < fdf->options->min)
 			fdf->options->min = pixel.z;
+		pixel.color = ft_read_color(ft_strchr(args[x], ','), fdf);
 		ft_display_error(!(tmp = ft_lstnew(&pixel, struct_size)), MlcErr);
 		ft_lstadd(lst, tmp);
 	}

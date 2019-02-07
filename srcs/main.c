@@ -28,6 +28,8 @@ int	main(int argc, char **argv)
 	fdf.win_ptr = mlx_new_window(fdf.mlx_ptr, W_WIDTH, W_HEIGHT, argv[1]);
 	ft_initialize_map(&fdf);
 	ft_initialize_image(&fdf);
+//	drawline(50, 50, 70, 70, &fdf);
+	ft_print_image(&fdf, &lst);
 	mlx_loop(fdf.mlx_ptr);
 	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/22 17:06:36 by lsandor-          #+#    #+#              #
-#    Updated: 2019/02/06 22:28:23 by lsandor-         ###   ########.fr        #
+#    Updated: 2019/02/07 18:35:09 by lsandor-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -79,6 +79,7 @@ SRCS = ft_atoi.c \
 		ft_lst_n.c \
 		ft_sqrt.c\
 		get_next_line.c\
+		ft_atoi_base.c\
 
 OBJ = $(SRCS:.c=.o)
 

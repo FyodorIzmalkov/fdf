@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/22 17:04:10 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/06 22:25:58 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/07 18:34:39 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,5 @@ int					ft_list_size(t_list *alst);
 void				ft_list_foreach(t_list *alst, void (*f)(void *, size_t));
 t_list				*ft_lst_n(t_list *lst, size_t n);
 int					ft_sqrt(int nb);
-
+int					ft_atoi_base(const char *str, int base);
 #endif
