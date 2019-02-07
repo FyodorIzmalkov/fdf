@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/06 23:51:24 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/07 14:11:17 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include "libft.h"
+# define MlcErr "Error. Malloc alocation failed."
+# define MapError "Error. Map is invalid."
 
 typedef struct s_pixel
 {
@@ -36,8 +38,8 @@ typedef struct	s_options
 
 typedef struct	s_fdf
 {
-	int	wd;
-	int hg;
+	int	col;
+	int row;
 	t_options *options;
 }				t_fdf;
 

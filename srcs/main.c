@@ -2,6 +2,7 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
+
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -18,7 +19,7 @@ int	main(int argc, char **argv)
 	t_list *lst;
 	t_fdf	fdf;
 
-	ft_display_error(argc != 2, "Error. Usage: ./fdf input_filename");
+	ft_display_error(argc != 2, "Error. Usage: ./fdf filename");
 	fd = open(argv[1], O_RDONLY);
 	ft_display_error((fd < 0), "Error. Invalid file name.");
 	ft_initialize_fdf(&fdf);
