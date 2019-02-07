@@ -1,32 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/07 15:01:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 16:08:21 by lsandor-         ###   ########.fr       */
+/*   Created: 2019/02/07 16:25:16 by lsandor-          #+#    #+#             */
+/*   Updated: 2019/02/07 16:49:04 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "fdf.h"
 
-# include <fcntl.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <unistd.h>
-# include "libft.h"
-
-# define BUFF_SIZE 1024
-
-typedef struct		s_file
+void	ft_initialize_image(t_fdf *fdf)
 {
-	char			*data;
-	int				fd;
-	struct s_file	*next;
-}					t_file;
-
-int					get_next_line(const int fd, char **line);
-#endif
+	fdf->image->img_ptr = mlx_new_image(fdf->mlx_ptr, W_WIDTH, W_HEIGHT);
+	fdf->image->add_ptr = mlx_get_data_addr(fdf->image->img_ptr, 
+			&fdf->image->bpp, &fdf->image->size_line, &fdf->image->endian);
+}

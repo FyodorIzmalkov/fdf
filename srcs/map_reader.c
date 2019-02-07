@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 23:22:38 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 14:12:09 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/07 15:55:44 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_read_map(int fd, t_list **lst, t_fdf *fdf)
 	char *gnl;
 	char **line_args;
 
-	while (get_next_line(fd, gnl) > 0)
+	while (get_next_line(fd, &gnl) > 0)
 	{
 		ft_display_error(!(line_args = ft_strsplit(gnl, ' ')), MlcErr);
 		if (fdf->col == -1)
