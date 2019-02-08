@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 18:10:29 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:20:22 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 
 static void	ft_get_iso_scale(t_fdf *fdf)
 {
+	double x;
+	double y;
+	
+	x = sqrt(fdf->col * fdf->col + fdf->row * fdf->row - 2 * fdf->col * 
+			fdf->row / 2);
+	y = sqrt(fdf->col * fdf->col + fdf->row * fdf->row + 2 * fdf->col *
+			fdf->row / 2);
+	y = fdf->options->z0 > y ? fdf->options->z0 + y : y;
+	x = W_WIDTH / x * 0.9;
+	y = W_HEIGHT / y * 0.9;
+	fdf->options->iso_scale = x > y ? y : x;
 }
 
 void	ft_initialize_fdf(t_fdf *fdf)
@@ -32,5 +43,5 @@ void	ft_initialize_map(t_fdf *fdf)
 	fdf->options->z0 = fdf->options->max + ABS(fdf->options->min);
 	fdf->options->x0 = fdf->col / 2;
 	fdf->options->y0 = fdf->row / 2;
-//	ft_get_iso_scale(fdf);
+	ft_get_iso_scale(fdf);
 }

@@ -6,16 +6,16 @@
 #    By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 12:40:45 by lsandor-          #+#    #+#              #
-#    Updated: 2019/02/07 18:12:57 by lsandor-         ###   ########.fr        #
+#    Updated: 2019/02/08 15:40:02 by lsandor-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 
 CC = gcc
-FLAGS =
-
+FLAGS = -O3
 #-Wall -Werror -Wextra -O3
+
 LIBRARIES = -lmlx -lm -lft -L$(LIBFT_DIRECTORY) -L$(MINILIBX_DIRECTORY) -framework OpenGL -framework AppKit
 INCLUDES = -I$(HEADERS_DIRECTORY) -I$(LIBFT_HEADERS) -I$(MINILIBX_HEADERS)
 
@@ -39,6 +39,7 @@ SOURCES_LIST = main.c\
 			   map_reader.c\
 			   image.c\
 			   print_map.c\
+			   hooks.c\
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

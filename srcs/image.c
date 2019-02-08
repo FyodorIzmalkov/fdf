@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:25:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 23:09:56 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 15:51:30 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,13 @@ void	ft_initialize_image(t_fdf *fdf)
 	fdf->image->bpp /= 8;
 }
 
-void	ft_set_color_to_image(t_fdf *fdf, int x, int y, int color)
+void	ft_clear_image(t_img *image)
+{
+	ft_bzero(image->img_ptr, W_WIDTH * W_HEIGHT * image->bpp);
+}
+
+
+void	ft_set_pixel_to_image(t_fdf *fdf, int x, int y, int color)
 {
 	if (x < 0 || x > W_WIDTH || y < 0 || y > W_HEIGHT)
 		return ;

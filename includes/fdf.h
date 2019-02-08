@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 23:03:41 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 15:50:08 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,12 @@ void	ft_read_map(int fd, t_list **lst, t_fdf *fdf);
 static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf);
 static	int	ft_count_width(char **line_args);
 //image.c
-void	ft_set_color_to_image(t_fdf *fdf, int x, int y, int color);
+void	ft_set_pixel_to_image(t_fdf *fdf, int x, int y, int color);
 void	ft_initialize_image(t_fdf *fdf);
+void	ft_clear_image(t_img *image);
 //print_map.c
 void	ft_print_image(t_fdf *fdf, t_list **lst);
 void drawline(int x0, int y0, int x1, int y1, t_fdf *fdf);
+//hooks.c
+int	ft_key_press(int keycode, t_fdf *fdf);
 #endif

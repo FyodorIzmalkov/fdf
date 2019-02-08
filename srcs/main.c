@@ -29,7 +29,9 @@ int	main(int argc, char **argv)
 	ft_initialize_map(&fdf);
 	ft_initialize_image(&fdf);
 //	drawline(50, 50, 70, 70, &fdf);
-	ft_print_image(&fdf, &lst);
+//	ft_print_image(&fdf, &lst);
+	//To handle a key press, X_MASK is always ignored
+	mlx_hook(fdf.win_ptr, 2, 0, ft_key_press, &fdf);
 	mlx_loop(fdf.mlx_ptr);
 	return (0);
 }

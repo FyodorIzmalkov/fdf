@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 00:00:20 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 15:52:04 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ void drawline(int x0, int y0, int x1, int y1, t_fdf *fdf)
 	{
 		if(p>=0)
 		{
-			ft_set_color_to_image(fdf, x, y, 16777215);
+			ft_set_pixel_to_image(fdf, x, y, 16777215);
 			y=y+1;
 			p=p+2*dy-2*dx;
 		}
 		else
 		{
-			ft_set_color_to_image(fdf, x, y, 16777215);
+			ft_set_pixel_to_image(fdf, x, y, 16777215);
 			p=p+2*dy;
 		}
 		x=x+1;
@@ -61,11 +61,11 @@ void	ft_print_image(t_fdf *fdf, t_list **lst)
 	while (next)
 	{
 		pixel = next->content;
-		pixel->x *= 20;
-		pixel->y *= 20;
-		pixel->z *= 20;
+		pixel->x *= 25;
+		pixel->y *= 25;
+		pixel->z *= 25;
 		iso(&pixel->x, &pixel->y, pixel->z);
-		ft_set_color_to_image(fdf, 400+ pixel->x, 400+pixel->y, 16777215);
+		ft_set_pixel_to_image(fdf, 800+ pixel->x, 500+pixel->y, 16777215);
 		next = next->next;
 	}
 	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->image->img_ptr, 0, 0);
