@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 19:35:48 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 21:03:45 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,10 @@ typedef struct	s_options
 	double	size;
 	int max;
 	int min;
+	int horiz;
+	int vertic;
+	int	x;
+	short proection;
 }				t_options;
 
 typedef struct	s_fdf
@@ -117,5 +121,5 @@ void	drawline(int x0, int y0, int x1, int y1, t_fdf *fdf);
 //hooks.c
 int	ft_key_press(int keycode, t_fdf *fdf);
 //rotationc.
-void	ft_rotate_dots(t_pixel *pixel, t_pixel angle, t_fdf *fdf);
+void	ft_rotate_dots(t_pixel *pixel, t_calc res, t_fdf *fdf);
 #endif

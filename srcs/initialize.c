@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 19:24:14 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 21:04:03 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,18 @@ void	ft_initialize_fdf(t_fdf *fdf)
 	ft_display_error(!(fdf->image = ft_memalloc(sizeof(t_img))), MlcErr);
 	fdf->options->min = 2147483647;
 	fdf->options->max = -2147483648;
-	fdf->options->z0 = 0.;
+	fdf->options->z0 = 0.0;
+	fdf->options->x = 200;
 	fdf->col = -1;
 	fdf->row = 0;
+	fdf->lines = NULL;
 	fdf->options->size = 1;
 	fdf->angle.x = 0.0;
 	fdf->angle.y = 0.0;
 	fdf->angle.z = 0.0;
+	fdf->options->proection = 0;
+	fdf->options->horiz = 0;
+	fdf->options->vertic = 0;
 }
 
 void	ft_initialize_map(t_fdf *fdf)

@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 19:49:28 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 20:25:07 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,8 @@ void	ft_print_map(t_fdf fdf)
 		fdf.first = *((t_line *)fdf.lines->content)->a;
 		fdf.second = *((t_line *)fdf.lines->content)->b;
 		ft_set_color(&fdf);
-		ft_rotate_dots(&fdf.first, fdf.angle, fdf.res,  &fdf);
-		ft_rotate_dots(&fdf.second, fdf.angle, &fdf);
+		ft_rotate_dots(&fdf.first, fdf.res,  &fdf);
+		ft_rotate_dots(&fdf.second, fdf.res, &fdf);
 		fdf.lines = fdf.lines->next;
 	}
 
