@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 16:20:22 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 16:25:52 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,8 @@ static void	ft_get_iso_scale(t_fdf *fdf)
 	double x;
 	double y;
 	
-	x = sqrt(fdf->col * fdf->col + fdf->row * fdf->row - 2 * fdf->col * 
-			fdf->row / 2);
-	y = sqrt(fdf->col * fdf->col + fdf->row * fdf->row + 2 * fdf->col *
-			fdf->row / 2);
+	x = sqrt(fdf->col * fdf->col + fdf->row * fdf->row - fdf->col * fdf->row);
+	y = sqrt(fdf->col * fdf->col + fdf->row * fdf->row + fdf->col * fdf->row);
 	y = fdf->options->z0 > y ? fdf->options->z0 + y : y;
 	x = W_WIDTH / x * 0.9;
 	y = W_HEIGHT / y * 0.9;

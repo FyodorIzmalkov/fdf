@@ -6,23 +6,40 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 23:22:38 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 18:42:58 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 17:42:34 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static	int		ft_read_color(char *str, t_fdf *fdf)
+static	t_list	*ft_get_lines(t_list **lst, int width)
 {
-	int color;
+	t_part x;
 
-	color = 0xFFFFFF;
-	if (str)
+	x.i = 1;
+	x.list = *lst;
+	x.part = NULL;
+	x.size_of_line = sizeof(t_line);
+	while (x.list)
 	{
-		color = ft_atoi_base(++str, 16);
-		fdf->options->coloured = 1;
+		x.l.a = x.list->content;
+		if ((x.scnd = ft_lst_n(x.list, width)))
+		{
+			x.l.b = x.scnd->content;
+			ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size_of_line)), MlcErr);
+			ft_lstadd(&x.part, x.temp);
+		}
+		if (x.i % width != 0)
+			if ((x.scnd = ft_lst_n(x.list, 1)))
+			{
+				x.l.b = x.scnd->content;
+				ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size_of_line)), MlcErr);
+				ft_lstadd(&x.part, x.temp);
+			}
+		x.i++;
+		x.list = x.list->next;
 	}
-	return (color);
+	return (x.part);
 }
 
 static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
@@ -43,7 +60,7 @@ static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
 			fdf->options->max = pixel.z;
 		if (pixel.z < fdf->options->min)
 			fdf->options->min = pixel.z;
-		pixel.color = ft_read_color(ft_strchr(args[x], ','), fdf);
+		pixel.color = 0xFFFFFF;
 		ft_display_error(!(tmp = ft_lstnew(&pixel, struct_size)), MlcErr);
 		ft_lstadd(lst, tmp);
 	}
@@ -73,4 +90,5 @@ void	ft_read_map(int fd, t_list **lst, t_fdf *fdf)
 		ft_free_args(&line_args, fdf->col);
 		fdf->row++;
 	}
+	fdf->lines = ft_get_lines(lst, fdf->col);
 }
