@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 15:50:08 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 17:40:20 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define MlcErr "Error. Malloc alocation failed."
 # define MapError "Error. Map is invalid."
 
+
 typedef struct s_img
 {
 	void	*img_ptr;
@@ -42,12 +43,30 @@ typedef struct s_pixel
 	int color;
 }				t_pixel;
 
+typedef struct s_line
+{
+	t_pixel *a;
+	t_pixel *b;
+}				t_line;
+
+typedef struct s_part
+{
+	t_line	l;
+	t_list	*part;
+	t_list	*scnd;
+	t_list	*list;
+	t_list	*temp;
+	size_t size_of_line;
+	int 	i;
+}				t_part;
+
 typedef struct	s_options
 {
 	double x0;
 	double y0;
 	double z0;
-	double iso_scale;
+	double 	iso_scale;
+	double	size;
 	short	coloured;
 	int max;
 	int min;
@@ -61,6 +80,7 @@ typedef struct	s_fdf
 	int row;
 	t_img		*image;
 	t_options *options;
+	t_list		*lines;
 }				t_fdf;
 
 
@@ -71,7 +91,7 @@ void	ft_free_args(char ***args, int i);
 void	ft_initialize_fdf(t_fdf *fdf);
 void	ft_initialize_map(t_fdf *fdf);
 // map_reader.c
-void	ft_read_map(int fd, t_list **lst, t_fdf *fdf);
+void	ft_read_map(int fd, t_list **lst,  t_fdf *fdf);
 static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf);
 static	int	ft_count_width(char **line_args);
 //image.c
