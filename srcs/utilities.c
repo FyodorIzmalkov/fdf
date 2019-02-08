@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 20:49:21 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/07 14:09:12 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:27:38 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,14 @@ void	ft_free_args(char ***args, int i)
 	}
 	free(args[0]);
 	args[0] = NULL;
+}
+
+void	ft_calculate_angles(t_fdf *fdf)
+{
+	fdf->res.sinx = sin(fdf->angle.x);
+	fdf->res.cosx = cos(fdf->angle.x);
+	fdf->res.siny = sin(fdf->angle.y);
+	fdf->res.cosy = cos(fdf->angle.y);
+	fdf->res.sinz = sin(fdf->angle.z);
+	fdf->res.cosz = cos(fdf->angle.z);
 }

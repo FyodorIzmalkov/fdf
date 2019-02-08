@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 17:39:34 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:49:28 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,29 @@ void drawline(int x0, int y0, int x1, int y1, t_fdf *fdf)
 	}
 }
 
+static void	ft_set_color(t_fdf *fdf)
+{
+	double third;
+
+	third = fdf->options->z0 / 3;
+	if (fdf->first.z < 0)
+		fdf->first.color = 0x4C2908;
+	else if (fdf->first.z <= third)
+		fdf->first.color = 0xDB4A4A;
+	else if (fdf->first.z <= third * 2)
+		fdf->first.color = 0xD67022;
+	else if (fdf->first.z <= fdf->options->z0)
+		fdf->first.color = 0xE5D120;
+	if (fdf->second.z < 0)
+		fdf->second.color = 0x4C2908;
+	else if (fdf->second.z <= third)
+		fdf->second.color = 0xDB4A4A;
+	else if (fdf->second.z <= third * 2)
+		fdf->second.color = 0xD67022;
+	else if (fdf->second.z <= fdf->options->z0)
+		fdf->second.color = 0xE5D120;
+}
+
 static void iso(double *x, double *y, double z)
 {
     double previous_x;
@@ -52,21 +75,17 @@ static void iso(double *x, double *y, double z)
     *y = -z + (previous_x + previous_y) * sin(0.523599);
 }
 
-void	ft_print_image(t_fdf *fdf, t_list **lst)
+void	ft_print_map(t_fdf fdf)
 {
-	t_list *next;
-	t_pixel *pixel;
-	
-	next = *lst;
-	while (next)
+	ft_calculate_angles(&fdf);
+	while (fdf.lines)
 	{
-		pixel = next->content;
-		pixel->x *= 25;
-		pixel->y *= 25;
-		pixel->z *= 25;
-		iso(&pixel->x, &pixel->y, pixel->z);
-		ft_set_pixel_to_image(fdf, 800+ pixel->x, 500+pixel->y, 16777215);
-		next = next->next;
+		fdf.first = *((t_line *)fdf.lines->content)->a;
+		fdf.second = *((t_line *)fdf.lines->content)->b;
+		ft_set_color(&fdf);
+		ft_rotate_dots(&fdf.first, fdf.angle, fdf.res,  &fdf);
+		ft_rotate_dots(&fdf.second, fdf.angle, &fdf);
+		fdf.lines = fdf.lines->next;
 	}
-	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->image->img_ptr, 0, 0);
+
 }

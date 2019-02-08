@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 16:25:52 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:24:14 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,21 @@ void	ft_initialize_fdf(t_fdf *fdf)
 	fdf->options->z0 = 0.;
 	fdf->col = -1;
 	fdf->row = 0;
+	fdf->options->size = 1;
+	fdf->angle.x = 0.0;
+	fdf->angle.y = 0.0;
+	fdf->angle.z = 0.0;
 }
 
 void	ft_initialize_map(t_fdf *fdf)
 {
-	fdf->options->z0 = fdf->options->max + ABS(fdf->options->min);
+	int minimal;
+
+	if (fdf->options->min < 0)
+		minimal = -fdf->options->min;
+	else
+		minimal = fdf->options->min;
+	fdf->options->z0 = fdf->options->max + minimal;
 	fdf->options->x0 = fdf->col / 2;
 	fdf->options->y0 = fdf->row / 2;
 	ft_get_iso_scale(fdf);

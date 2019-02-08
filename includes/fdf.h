@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 17:40:20 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 19:35:48 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,15 @@
 # define MlcErr "Error. Malloc alocation failed."
 # define MapError "Error. Map is invalid."
 
+typedef struct	s_calc
+{
+	double sinx;
+	double cosx;
+	double siny;
+	double cosy;
+	double sinz;
+	double cosz;
+}			t_calc;
 
 typedef struct s_img
 {
@@ -67,7 +76,6 @@ typedef struct	s_options
 	double z0;
 	double 	iso_scale;
 	double	size;
-	short	coloured;
 	int max;
 	int min;
 }				t_options;
@@ -78,6 +86,10 @@ typedef struct	s_fdf
 	void	*win_ptr;
 	int	col;
 	int row;
+	t_calc		res;
+	t_pixel		angle;
+	t_pixel		first;
+	t_pixel		second;
 	t_img		*image;
 	t_options *options;
 	t_list		*lines;
@@ -87,6 +99,7 @@ typedef struct	s_fdf
 // utilities.c
 void	ft_display_error(int condition, char *str);
 void	ft_free_args(char ***args, int i);
+void	ft_calculate_angles(t_fdf *fdf);
 // initialize.c
 void	ft_initialize_fdf(t_fdf *fdf);
 void	ft_initialize_map(t_fdf *fdf);
@@ -99,8 +112,10 @@ void	ft_set_pixel_to_image(t_fdf *fdf, int x, int y, int color);
 void	ft_initialize_image(t_fdf *fdf);
 void	ft_clear_image(t_img *image);
 //print_map.c
-void	ft_print_image(t_fdf *fdf, t_list **lst);
-void drawline(int x0, int y0, int x1, int y1, t_fdf *fdf);
+void	ft_print_map(t_fdf fdf);
+void	drawline(int x0, int y0, int x1, int y1, t_fdf *fdf);
 //hooks.c
 int	ft_key_press(int keycode, t_fdf *fdf);
+//rotationc.
+void	ft_rotate_dots(t_pixel *pixel, t_pixel angle, t_fdf *fdf);
 #endif
