@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 18:36:26 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 23:52:16 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 14:22:20 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,15 @@ static	void	ft_apply_iso_scale(t_pixel *pixel, t_fdf *fdf)
 
 static	void	ft_chose_proection(t_pixel *pixel, t_fdf *fdf)
 {
+	double y;
+	double x;
+
 	if (fdf->options->proection == 1)
 	{
-		pixel->x = (pixel->x - pixel->y) * 0.8660;
-		pixel->y = ((pixel->x + pixel->y) / 2) - pixel->z;
+		y = pixel->y;
+		x = pixel->x;
+		pixel->x = (x - y) * 0.8660;
+		pixel->y = ((x + y) / 2) - pixel->z;
 		ft_apply_iso_scale(pixel, fdf);
 	}
 	else if (fdf->options->proection == 2)
