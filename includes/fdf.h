@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/09 12:36:32 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 13:30:37 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,8 @@ void	ft_print_map(t_fdf fdf);
 void	drawline(int x0, int y0, int x1, int y1, t_fdf *fdf);
 //hooks.c
 int	ft_key_press(int keycode, t_fdf *fdf);
-//rotationc.
+//rotation.c
 void	ft_rotate_dots(t_pixel *pixel, t_calc res, t_fdf *fdf);
+//color.c
+int	ft_get_color(t_putline current, t_pixel start, t_pixel end);
 #endif

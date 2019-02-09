@@ -6,40 +6,11 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/09 12:44:47 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 13:35:38 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-/*
-void ft_put_line(t_fdf *fdf)
-{
-	t_alg alg;
-	alg.dx = fdf->second.x - fdf->first.x;
-	alg.dy = fdf->second.y - fdf->first.y;
-	alg.x = fdf->first.x;
-	alg.y = fdf->first.y;
-	alg.p = 2 * alg.dy - alg.dx;
-	printf("alg.p: %d, 2*alg.dy: %d, alg.dx: %d\n",alg.p, 2*alg.dy, alg.dx);
-	printf("ALG.X:%d SECOND.X:%f.2\n",alg.x, fdf->second.x);
-	while(alg.x < fdf->second.x)
-	{
-		if(alg.p >= 0)
-		{
-			printf("1x: %d, 1y: %d\n",alg.x, alg.y);
-			ft_set_pixel_to_image(fdf, alg.x, alg.y, 16777215);
-			alg.y++;
-			alg.p = alg.p + 2 * alg.dy - 2 * alg.dx;
-		}
-		else
-		{
-			printf("2x: %d, 2y: %d\n",alg.x, alg.y);
-			ft_set_pixel_to_image(fdf, alg.x, alg.y, 16777215);
-			alg.p = alg.p + 2 * alg.dy;
-		}
-		alg.x++;
-	}
-}*/
 
 static	void	ft_put_line_low(t_pixel p0, t_pixel p1, t_fdf *fdf)
 {
@@ -58,7 +29,7 @@ static	void	ft_put_line_low(t_pixel p0, t_pixel p1, t_fdf *fdf)
 	ln.x = p0.x;
 	while (ln.x < p1.x)
 	{
-		ft_set_pixel_to_image(fdf, ln.x, ln.y, 16777215);
+		ft_set_pixel_to_image(fdf, ln.x, ln.y, ft_get_color(ln, p0, p1));
 		if (ln.d > 0)
 		{
 			ln.y += ln.yi;
@@ -86,7 +57,7 @@ static	void	ft_put_line_high(t_pixel p0, t_pixel p1, t_fdf *fdf)
 	ln.y = p0.y;
 	while (ln.y < p1.y)
 	{
-		ft_set_pixel_to_image(fdf, ln.x, ln.y, 16777215);
+		ft_set_pixel_to_image(fdf, ln.x, ln.y, ft_get_color(ln, p0, p1));
 		if (ln.d > 0)
 		{
 			ln.x += ln.xi;
@@ -103,9 +74,11 @@ static void	ft_put_line(t_fdf *fdf)
 	int tmpx;
 	
 	tmpy = fdf->second.y - fdf->first.y;
-	(tmpy >= 0) ? tmpy : -tmpy;
+	if (tmpy < 0)
+		tmpy = -tmpy;
 	tmpx = fdf->second.x - fdf->first.x;
-	(tmpx >= 0) ? tmpx : -tmpx;
+	if (tmpx < 0)
+		tmpx = -tmpx;
 	if (tmpy < tmpx)
 		if (fdf->first.x > fdf->second.x)
 			ft_put_line_low(fdf->second, fdf->first, fdf);
