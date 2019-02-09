@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/09 13:30:37 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 13:38:14 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,7 +137,6 @@ void	ft_initialize_image(t_fdf *fdf);
 void	ft_clear_image(t_img *image);
 //print_map.c
 void	ft_print_map(t_fdf fdf);
-void	drawline(int x0, int y0, int x1, int y1, t_fdf *fdf);
 //hooks.c
 int	ft_key_press(int keycode, t_fdf *fdf);
 //rotation.c

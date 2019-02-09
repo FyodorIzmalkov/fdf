@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 15:57:51 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 13:41:55 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_key_press(int keycode, t_fdf *fdf)
 {
-//	ft_clear_image(fdf->image);
+	ft_clear_image(fdf->image);
 	keycode == 53 ? exit (0) : 0;
 	return (0);
 }

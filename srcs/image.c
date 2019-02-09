@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 16:25:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 18:06:08 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 13:46:00 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	ft_initialize_image(t_fdf *fdf)
 
 void	ft_clear_image(t_img *image)
 {
-	ft_bzero(image->img_ptr, W_WIDTH * W_HEIGHT * image->bpp);
+	ft_bzero(image->add_ptr, W_WIDTH * W_HEIGHT * image->bpp);
 }
 
 
