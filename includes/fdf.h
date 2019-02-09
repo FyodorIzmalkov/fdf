@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 21:03:45 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 12:36:32 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,30 @@
 # include <mlx.h>
 # include <fcntl.h>
 # include "libft.h"
-# define W_WIDTH 2000
-# define W_HEIGHT 1000
+# define W_WIDTH 2560
+# define W_HEIGHT 1300
 # define ABS(x) ((x) < 0 ? -(x) : (x))
 # define MlcErr "Error. Malloc alocation failed."
 # define MapError "Error. Map is invalid."
+typedef struct	s_putline
+{
+	int dx;
+	int dy;
+	int xi;
+	int yi;
+	int d;
+	int x;
+	int y;
+}				t_putline;
+
+typedef struct	s_alg
+{
+	int dx;
+	int dy;
+	int p;
+	int x;
+	int y;
+}				t_alg;
 
 typedef struct	s_calc
 {
@@ -76,6 +95,7 @@ typedef struct	s_options
 	double z0;
 	double 	iso_scale;
 	double	size;
+	double	scale;
 	int max;
 	int min;
 	int horiz;

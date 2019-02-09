@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 21:04:03 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/08 23:01:17 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	ft_initialize_map(t_fdf *fdf)
 	else
 		minimal = fdf->options->min;
 	fdf->options->z0 = fdf->options->max + minimal;
-	fdf->options->x0 = fdf->col / 2;
-	fdf->options->y0 = fdf->row / 2;
+	fdf->options->x0 = fdf->col >> 1;
+	fdf->options->y0 = fdf->row >> 1;
 	ft_get_iso_scale(fdf);
 }
