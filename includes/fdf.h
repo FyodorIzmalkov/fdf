@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/09 13:38:14 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/09 14:57:11 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ void	ft_calculate_angles(t_fdf *fdf);
 // initialize.c
 void	ft_initialize_fdf(t_fdf *fdf);
 void	ft_initialize_map(t_fdf *fdf);
+void	ft_set_defaults(t_fdf *fdf);
 // map_reader.c
 void	ft_read_map(int fd, t_list **lst,  t_fdf *fdf);
 static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf);
