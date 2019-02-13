@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 19:11:19 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 21:24:08 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ static	void	ft_key_press2(int keycode, t_fdf *fdf)
 			fdf->options->x = fdf->col > fdf->row ? fdf->col : fdf->row;
 	}
 	keycode == 7 ? fdf->options->x *= 1.1 : 0;
-	keycode == 69 ? fdf->options->altitude += 10 : 0;
-	keycode == 78 ? fdf->options->altitude -= 10 : 0;
+	keycode == 69 ? fdf->options->altitude += 1 : 0;
+	keycode == 78 ? fdf->options->altitude -= 1 : 0;
 }
 
 int	ft_key_press(int keycode, t_fdf *fdf)

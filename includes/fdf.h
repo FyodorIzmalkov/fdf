@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 18:05:57 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 21:25:38 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ typedef struct	s_fdf
 void	ft_display_error(int condition, char *str);
 void	ft_free_args(char ***args, int i);
 void	ft_calculate_angles(t_fdf *fdf);
+int		ft_red_cross(void *param);
 // initialize.c
 void	ft_initialize_fdf(t_fdf *fdf);
 void	ft_initialize_map(t_fdf *fdf);

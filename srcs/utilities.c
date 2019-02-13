@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 20:49:21 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/08 19:27:38 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 21:27:00 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,11 @@ void	ft_calculate_angles(t_fdf *fdf)
 	fdf->res.cosy = cos(fdf->angle.y);
 	fdf->res.sinz = sin(fdf->angle.z);
 	fdf->res.cosz = cos(fdf->angle.z);
+}
+
+int	ft_red_cross(void *param)
+{
+	(void)param;
+	exit(0);
+	return (0);
 }

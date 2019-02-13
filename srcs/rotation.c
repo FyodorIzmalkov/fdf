@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 18:36:26 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 19:11:41 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 21:12:03 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	ft_rotate_dots(t_pixel *pixel, t_calc res, t_fdf *fdf)
 
 	pixel->x -= fdf->options->x0;
 	pixel->y -= fdf->options->y0;
+	if (pixel->z > fdf->options->min)
+		pixel->z += fdf->options->altitude;
 	if (fdf->options->min >= 0)
 		pixel->z -= fdf->options->z0 / 2;
 	prev.x = pixel->x;
