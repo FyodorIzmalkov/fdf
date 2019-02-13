@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/09 14:42:09 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:05:39 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void	ft_initialize_fdf(t_fdf *fdf)
 	fdf->options->proection = 0;
 	fdf->options->horiz = 0;
 	fdf->options->vertic = 0;
+	fdf->options->altitude = 0;
 }
 
 void	ft_initialize_map(t_fdf *fdf)
@@ -67,5 +68,6 @@ void	ft_set_defaults(t_fdf *fdf)
 	fdf->options->size = 1;
 	fdf->options->horiz = 0;
 	fdf->options->vertic = 0;
+	fdf->options->altitude = 0;
 	fdf->options->x = 200;
 }

@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 18:36:26 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/09 14:22:20 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 19:11:41 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static void		ft_apply_scale(t_pixel *pixel, t_fdf *fdf)
 	scaler = fdf->options->scale * fdf->options->size;
 	pixel->x *= scaler;
 	pixel->y *= scaler;
-	pixel->z *= scaler;
 	pixel->x += (W_WIDTH >> 1) + fdf->options->horiz;
 	pixel->y += (W_HEIGHT >> 1) + fdf->options->vertic;
 }
@@ -33,10 +32,21 @@ static	void	ft_apply_iso_scale(t_pixel *pixel, t_fdf *fdf)
 	scaler = fdf->options->iso_scale * fdf->options->size;
 	pixel->x *= scaler;
 	pixel->y *= scaler;
-	pixel->z *= scaler;
 	pixel->x += (W_WIDTH >> 1) + fdf->options->horiz;
 	pixel->y += (W_HEIGHT >> 1) + fdf->options->vertic;
 
+}
+
+static	void	ft_two_to_one_iso(t_pixel *pixel, t_fdf *fdf)
+{
+	double y;
+	double x;
+
+	y = pixel->y;
+	x = pixel->x;
+	pixel->x = (x - y) * 0.8943;
+	pixel->y = ((x + y) * 0.4473) - pixel->z;
+	ft_apply_iso_scale(pixel, fdf);
 }
 
 static	void	ft_chose_proection(t_pixel *pixel, t_fdf *fdf)
@@ -53,6 +63,8 @@ static	void	ft_chose_proection(t_pixel *pixel, t_fdf *fdf)
 		ft_apply_iso_scale(pixel, fdf);
 	}
 	else if (fdf->options->proection == 2)
+		ft_two_to_one_iso(pixel, fdf);
+	else if (fdf->options->proection == 3)
 	{
 		pixel->x = pixel->x * fdf->options->x / (fdf->options->x - pixel->z);
 		pixel->y = pixel->y * fdf->options->x / (fdf->options->x - pixel->z);

@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/09 14:57:11 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 18:05:57 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ typedef struct	s_options
 	int min;
 	int horiz;
 	int vertic;
+	int	altitude;
 	int	x;
 	short proection;
 }				t_options;
