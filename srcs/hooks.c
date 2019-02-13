@@ -6,11 +6,12 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 21:24:08 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 00:02:14 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
 static	void	ft_key_press2(int keycode, t_fdf *fdf)
 {
 	keycode == 13 ? fdf->angle.x -= 0.0698132 : 0;
@@ -52,5 +53,52 @@ int	ft_key_press(int keycode, t_fdf *fdf)
 	}
 	ft_key_press2(keycode, fdf);
 	ft_print_map(*fdf);
+	return (0);
+}
+
+int	ft_mouse_press(int button,int x, int y, t_fdf *fdf)
+{
+	ft_clear_image(fdf->image);
+	if (x >= 0 && x <= W_WIDTH && y >= 0 && y <= W_HEIGHT)
+	{
+		if (button == 1)
+		{
+			fdf->mouse.curx = x;
+			fdf->mouse.cury = y;
+			fdf->mouse.pressed = 1;
+		}
+		button == 4 ? fdf->options->size *= 0.9 : 0;
+		button == 5 ? fdf->options->size *= 1.1 : 0;
+		if (button == 4 || button == 5)
+			ft_print_map(*fdf);
+	}
+	return (0);
+}
+
+int	ft_mouse_release(int button, int x, int y, t_fdf *fdf)
+{	
+	(void)button;
+	(void)x;
+	(void)y;
+	fdf->mouse.pressed = 0;
+	return (0);
+}
+
+int	ft_mouse_move(int x, int y, t_fdf *fdf)
+{
+	ft_clear_image(fdf->image);
+	if (x >= 0 && x <= W_WIDTH && y >= 0 && y <= W_HEIGHT)
+	{
+		fdf->mouse.prevx = fdf->mouse.curx;
+		fdf->mouse.prevy = fdf->mouse.cury;
+		fdf->mouse.curx = x;
+		fdf->mouse.cury = y;
+		if (fdf->mouse.pressed)
+		{
+			fdf->angle.x -= -(y - fdf->mouse.prevy) * 0.005;
+			fdf->angle.y += (x - fdf->mouse.prevx) * 0.005;
+			ft_print_map(*fdf);
+		}
+	}
 	return (0);
 }

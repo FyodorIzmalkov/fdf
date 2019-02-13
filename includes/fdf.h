@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 21:25:38 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/13 23:52:00 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,16 @@ typedef struct s_part
 	int 	i;
 }				t_part;
 
+typedef struct	s_mouse
+{
+	int curx;
+	int cury;
+	int prevx;
+	int prevy;
+	char button;
+	char pressed;
+}				t_mouse;
+
 typedef struct	s_options
 {
 	double x0;
@@ -115,6 +125,7 @@ typedef struct	s_fdf
 	t_pixel		angle;
 	t_pixel		first;
 	t_pixel		second;
+	t_mouse		mouse;
 	t_img		*image;
 	t_options *options;
 	t_list		*lines;
@@ -142,6 +153,9 @@ void	ft_clear_image(t_img *image);
 void	ft_print_map(t_fdf fdf);
 //hooks.c
 int	ft_key_press(int keycode, t_fdf *fdf);
+int	ft_mouse_press(int button, int x, int y, t_fdf *fdf);
+int	ft_mouse_release(int button, int x, int y, t_fdf *fdf);
+int	ft_mouse_move(int x, int y, t_fdf *fdf);
 //rotation.c
 void	ft_rotate_dots(t_pixel *pixel, t_calc res, t_fdf *fdf);
 //color.c

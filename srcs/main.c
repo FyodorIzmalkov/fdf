@@ -29,6 +29,9 @@ int	main(int argc, char **argv)
 	ft_initialize_map(&fdf);
 	ft_initialize_image(&fdf);
 	mlx_hook(fdf.win_ptr, 2, 0, ft_key_press, &fdf);
+	mlx_hook(fdf.win_ptr, 4, 0, ft_mouse_press, &fdf);
+	mlx_hook(fdf.win_ptr, 5, 0, ft_mouse_release, &fdf);
+	mlx_hook(fdf.win_ptr, 6, 0, ft_mouse_move, &fdf);
 	mlx_hook(fdf.win_ptr, 17, 0, ft_red_cross, &fdf);
 	mlx_loop(fdf.mlx_ptr);
 	return (0);
