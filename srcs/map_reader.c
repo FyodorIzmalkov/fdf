@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 23:22:38 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 19:30:25 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 17:51:03 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
 			fdf->options->max = pixel.z;
 		if (pixel.z < fdf->options->min)
 			fdf->options->min = pixel.z;
-		pixel.color = 0xFFFFFF;
 		ft_display_error(!(tmp = ft_lstnew(&pixel, struct_size)), MlcErr);
 		ft_lstadd(lst, tmp);
 	}

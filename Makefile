@@ -6,7 +6,7 @@
 #    By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/02/06 12:40:45 by lsandor-          #+#    #+#              #
-#    Updated: 2019/02/09 13:30:12 by lsandor-         ###   ########.fr        #
+#    Updated: 2019/02/14 14:38:30 by lsandor-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,6 +42,7 @@ SOURCES_LIST = main.c\
 			   hooks.c\
 			   rotation.c\
 			   color.c\
+			   bonus_things.c\
 
 SOURCES = $(addprefix $(SOURCES_DIRECTORY), $(SOURCES_LIST))
 

@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 19:43:25 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 18:48:05 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,13 @@ void	ft_print_map(t_fdf fdf)
 		ft_rotate_dots(&fdf.second, fdf.res, &fdf);
 		ft_put_line(&fdf);
 		fdf.lines = fdf.lines->next;
+	}
+	while (fdf.drawn)
+	{
+		fdf.first = *((t_line *)fdf.drawn->content)->b;
+		fdf.second = *((t_line *)fdf.drawn->content)->a;
+		ft_put_line(&fdf);
+		fdf.drawn = fdf.drawn->next;
 	}
 	mlx_put_image_to_window(fdf.mlx_ptr, fdf.win_ptr, fdf.image->img_ptr, 0, 0);
 }

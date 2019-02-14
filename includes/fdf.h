@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 23:52:00 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 20:38:47 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,9 @@ typedef struct	s_mouse
 	int cury;
 	int prevx;
 	int prevy;
-	char button;
+	int	x1;
+	int y1;
+	char draw_button;
 	char pressed;
 }				t_mouse;
 
@@ -112,7 +114,7 @@ typedef struct	s_options
 	int vertic;
 	int	altitude;
 	int	x;
-	short proection;
+	char	proection;
 }				t_options;
 
 typedef struct	s_fdf
@@ -129,6 +131,7 @@ typedef struct	s_fdf
 	t_img		*image;
 	t_options *options;
 	t_list		*lines;
+	t_list		*drawn;
 }				t_fdf;
 
 
@@ -137,6 +140,7 @@ void	ft_display_error(int condition, char *str);
 void	ft_free_args(char ***args, int i);
 void	ft_calculate_angles(t_fdf *fdf);
 int		ft_red_cross(void *param);
+void	ft_draw_with_rmb(int x, int y, t_fdf *fdf);
 // initialize.c
 void	ft_initialize_fdf(t_fdf *fdf);
 void	ft_initialize_map(t_fdf *fdf);
@@ -160,4 +164,6 @@ int	ft_mouse_move(int x, int y, t_fdf *fdf);
 void	ft_rotate_dots(t_pixel *pixel, t_calc res, t_fdf *fdf);
 //color.c
 int	ft_get_color(t_putline current, t_pixel start, t_pixel end);
+//bonus_things.c
+void	ft_add_mouse_draw_data(t_pixel *prev, t_pixel *cur, t_fdf *fdf);
 #endif

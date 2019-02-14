@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/13 23:35:40 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 18:56:17 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	ft_initialize_fdf(t_fdf *fdf)
 	fdf->col = -1;
 	fdf->row = 0;
 	fdf->lines = NULL;
+	fdf->drawn = NULL;
 	fdf->options->size = 1;
 	fdf->angle.x = 0.0;
 	fdf->angle.y = 0.0;
@@ -45,6 +46,7 @@ void	ft_initialize_fdf(t_fdf *fdf)
 	fdf->options->vertic = 0;
 	fdf->options->altitude = 0;
 	fdf->mouse.pressed = 0;
+	fdf->mouse.draw_button = 0;
 }
 
 void	ft_initialize_map(t_fdf *fdf)

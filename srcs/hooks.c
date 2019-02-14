@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 00:02:14 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 20:38:54 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,19 @@ int	ft_mouse_press(int button,int x, int y, t_fdf *fdf)
 		button == 5 ? fdf->options->size *= 1.1 : 0;
 		if (button == 4 || button == 5)
 			ft_print_map(*fdf);
+		if (button == 2)
+		{
+			if (fdf->mouse.draw_button == 0)
+			{
+				fdf->mouse.x1 = x;
+				fdf->mouse.y1 = y;
+				fdf->mouse.draw_button = 1;
+			}
+			else
+				ft_draw_with_rmb(x, y, fdf);
+		}
 	}
+	ft_print_map(*fdf);
 	return (0);
 }
 
