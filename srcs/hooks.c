@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 21:02:06 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:18:26 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ static	void	ft_key_press2(int keycode, t_fdf *fdf)
 	keycode == 125 ? fdf->options->vertic += 20 : 0;
 	keycode == 123 ? fdf->options->horiz -= 20 : 0;
 	keycode == 124 ? fdf->options->horiz += 20 : 0;
+	keycode == 47 ? fdf->decreaser++ : 0;
+	if (keycode == 43 && fdf->decreaser > 0)
+		fdf->decreaser--;
 	if (keycode == 6)
 	{
 		fdf->options->x *= 0.9;

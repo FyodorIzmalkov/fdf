@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 20:54:48 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:15:30 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,21 +97,24 @@ static void	ft_set_color(t_fdf *fdf)
 
 	third = fdf->options->z0 / 3;
 	if (fdf->first.z < 0)
-		fdf->first.color = 0x4C2908;
+		fdf->first.color = 0x0413e8;
 	else if (fdf->first.z <= third)
-		fdf->first.color = 0xDB4A4A;
+		fdf->first.color = 0x077F11;
 	else if (fdf->first.z <= third * 2)
-		fdf->first.color = 0xD67022;
+		fdf->first.color = 0x602B07;
 	else if (fdf->first.z <= fdf->options->z0)
-		fdf->first.color = 0xE5D120;
+		fdf->first.color = 0xffffff;
 	if (fdf->second.z < 0)
-		fdf->second.color = 0x4C2908;
+		fdf->second.color = 0x0413e8;
 	else if (fdf->second.z <= third)
-		fdf->second.color = 0xDB4A4A;
+		fdf->second.color = 0x077F11;
 	else if (fdf->second.z <= third * 2)
-		fdf->second.color = 0xD67022;
+		fdf->second.color = 0x602B07;
 	else if (fdf->second.z <= fdf->options->z0)
-		fdf->second.color = 0xE5D120;
+		fdf->second.color = 0xFFFFFF;
+	fdf->decreaser == 0 ? fdf->decreaser = 1 : 0;
+	fdf->first.z /= fdf->decreaser;
+	fdf->second.z /= fdf->decreaser;
 }
 
 void	ft_print_map(t_fdf fdf)

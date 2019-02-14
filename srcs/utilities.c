@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 20:49:21 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 21:01:35 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 21:50:24 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ void	ft_draw_with_rmb(int x, int y, t_fdf *fdf)
 		fdf->mouse.draw_button = 1;
 		return ;
 	}
-	free(fdf->drawn);
 	fdf->mouse.draw_button = 0;
 	f.x = fdf->mouse.x1;
 	f.y = fdf->mouse.y1;
@@ -73,4 +72,6 @@ void	ft_draw_with_rmb(int x, int y, t_fdf *fdf)
 	ft_display_error(!(fdf->drawn = ft_lstnew(&dat, sizeof(t_line))),
 			"Error. Malloc allocation failed.");
 	ft_print_map(*fdf);
+	free(fdf->drawn);
+	fdf->drawn = NULL;
 }

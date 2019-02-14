@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 22:54:43 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 18:56:17 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:12:26 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_initialize_fdf(t_fdf *fdf)
 	fdf->options->x = 200;
 	fdf->col = -1;
 	fdf->row = 0;
+	fdf->decreaser = 2;
 	fdf->lines = NULL;
 	fdf->drawn = NULL;
 	fdf->options->size = 1;
@@ -73,4 +74,5 @@ void	ft_set_defaults(t_fdf *fdf)
 	fdf->options->vertic = 0;
 	fdf->options->altitude = 0;
 	fdf->options->x = 200;
+	fdf->decreaser = 2;
 }

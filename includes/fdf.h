@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 20:38:47 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:03:40 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ typedef struct	s_fdf
 	void	*win_ptr;
 	int	col;
 	int row;
+	int	decreaser;
 	t_calc		res;
 	t_pixel		angle;
 	t_pixel		first;
@@ -165,5 +166,5 @@ void	ft_rotate_dots(t_pixel *pixel, t_calc res, t_fdf *fdf);
 //color.c
 int	ft_get_color(t_putline current, t_pixel start, t_pixel end);
 //bonus_things.c
-void	ft_add_mouse_draw_data(t_pixel *prev, t_pixel *cur, t_fdf *fdf);
+void	ft_init_decreaser(t_fdf *fdf);
 #endif
