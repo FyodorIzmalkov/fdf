@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:18:26 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:39:40 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static	void	ft_key_press2(int keycode, t_fdf *fdf)
 	keycode == 123 ? fdf->options->horiz -= 20 : 0;
 	keycode == 124 ? fdf->options->horiz += 20 : 0;
 	keycode == 47 ? fdf->decreaser++ : 0;
-	if (keycode == 43 && fdf->decreaser > 0)
+	if (keycode == 43 && fdf->decreaser != 1)
 		fdf->decreaser--;
 	if (keycode == 6)
 	{
@@ -44,6 +44,11 @@ int	ft_key_press(int keycode, t_fdf *fdf)
 {
 	ft_clear_image(fdf->image);
 	keycode == 53 ? exit (0) : 0;
+	if (keycode == 48)
+	{
+		fdf->color_changer == 10 ? fdf->color_changer = 0 : 0;
+		fdf->color_changer++;
+	}
 	keycode == 15 ? fdf->options->size *= 1.1 : 0;
 	keycode == 3 ? fdf->options->size *= 0.9 : 0;
 	if (keycode >= 18 && keycode <= 21)

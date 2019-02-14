@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:15:30 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:38:13 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ static void	ft_put_line(t_fdf *fdf)
 			ft_put_line_high(fdf->first, fdf->second, fdf);
 }
 
-static void	ft_set_color(t_fdf *fdf)
+static void	ft_set_color(t_fdf *fdf, int color)
 {
 	double third;
 
@@ -99,7 +99,7 @@ static void	ft_set_color(t_fdf *fdf)
 	if (fdf->first.z < 0)
 		fdf->first.color = 0x0413e8;
 	else if (fdf->first.z <= third)
-		fdf->first.color = 0x077F11;
+		fdf->first.color = color;
 	else if (fdf->first.z <= third * 2)
 		fdf->first.color = 0x602B07;
 	else if (fdf->first.z <= fdf->options->z0)
@@ -107,24 +107,24 @@ static void	ft_set_color(t_fdf *fdf)
 	if (fdf->second.z < 0)
 		fdf->second.color = 0x0413e8;
 	else if (fdf->second.z <= third)
-		fdf->second.color = 0x077F11;
+		fdf->second.color = color;
 	else if (fdf->second.z <= third * 2)
 		fdf->second.color = 0x602B07;
 	else if (fdf->second.z <= fdf->options->z0)
 		fdf->second.color = 0xFFFFFF;
-	fdf->decreaser == 0 ? fdf->decreaser = 1 : 0;
 	fdf->first.z /= fdf->decreaser;
 	fdf->second.z /= fdf->decreaser;
 }
 
 void	ft_print_map(t_fdf fdf)
 {
+	ft_change_color(&fdf);
 	ft_calculate_angles(&fdf);
 	while (fdf.lines)
 	{
 		fdf.first = *((t_line *)fdf.lines->content)->b;
 		fdf.second = *((t_line *)fdf.lines->content)->a;
-		ft_set_color(&fdf);
+		ft_set_color(&fdf, fdf.color);
 		ft_rotate_dots(&fdf.first, fdf.res,  &fdf);
 		ft_rotate_dots(&fdf.second, fdf.res, &fdf);
 		ft_put_line(&fdf);
