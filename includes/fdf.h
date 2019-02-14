@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:37:00 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:57:24 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,4 +170,5 @@ int	ft_get_color(t_putline current, t_pixel start, t_pixel end);
 //bonus_things.c
 void	ft_init_decreaser(t_fdf *fdf);
 void	ft_change_color(t_fdf *fdf);
+void	ft_put_string_to_window(t_fdf fdf);
 #endif

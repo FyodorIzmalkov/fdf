@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:38:13 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/14 23:59:02 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,4 +138,5 @@ void	ft_print_map(t_fdf fdf)
 		fdf.drawn = fdf.drawn->next;
 	}
 	mlx_put_image_to_window(fdf.mlx_ptr, fdf.win_ptr, fdf.image->img_ptr, 0, 0);
+	ft_put_string_to_window(fdf);
 }

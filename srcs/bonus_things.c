@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:27:19 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:34:46 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 00:02:33 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,12 @@ void	ft_change_color(t_fdf *fdf)
 		fdf->color = 0xddcc0b;
 	else if (fdf->color_changer == 10)
 		fdf->color = 0xd16b0c;
+}
+
+void	ft_put_string_to_window(t_fdf fdf)
+{
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 5, 0xFFFFFF, "USEFUL HOTKEYS:");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 25, 0xFFFFFF, "W / S - to rotate X axis");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 40, 0xFFFFFF, "A / D - to rotate Y axis");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 55, 0xFFFFFF, "Q / E - to rotate Z axis");
 }
