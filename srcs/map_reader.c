@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 23:22:38 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/15 17:02:36 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 19:33:47 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ static	int		ft_count_width(char **line_args)
 {
 	int	i;
 
+	i = 0;
 	while (line_args[i])
 		i++;
 	return (i);
