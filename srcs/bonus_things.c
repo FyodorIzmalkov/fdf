@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/14 14:27:19 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/15 00:02:33 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:19:58 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,28 @@ void	ft_change_color(t_fdf *fdf)
 
 void	ft_put_string_to_window(t_fdf fdf)
 {
-	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 5, 0xFFFFFF, "USEFUL HOTKEYS:");
-	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 25, 0xFFFFFF, "W / S - to rotate X axis");
-	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 40, 0xFFFFFF, "A / D - to rotate Y axis");
-	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 5, 55, 0xFFFFFF, "Q / E - to rotate Z axis");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 25, 0xFFFFFF, 
+			"| W / S - to rotate X axis                                  |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 45, 0xFFFFFF, 
+			"| A / D - to rotate Y axis                                  |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 65, 0xFFFFFF, 
+			"| Q / E - to rotate Z axis                                  |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 85, 0xFFFFFF, 
+			"| ARROWS - to move the image                                |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 105, 0xFFFFFF, 
+			"| < and > - to change Z multiplier                          |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 125, 0xFFFFFF, 
+			"| NUM's '+' and '-' to change Z value                       |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 145, 0xFFFFFF, 
+			"| TAB - to change colors                                    |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 165, 0xFFFFFF, 
+			"| R / F or Mouse scroll to change size                      |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 185, 0xFFFFFF, 
+			"| 1 2 3 4 - to select projection                            |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 205, 0xFFFFFF, 
+			"| You can rotate the image with mouse left button pressed   |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 225, 0xFFFFFF, 
+			"| Draw a line with 2 mouse right clicks                     |");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 10, 245, 0xFFFFFF, 
+			"| ECS - to close the FDF                                    |");
 }

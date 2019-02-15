@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:59:02 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:20:48 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,8 @@ void	ft_print_map(t_fdf fdf)
 	}
 	mlx_put_image_to_window(fdf.mlx_ptr, fdf.win_ptr, fdf.image->img_ptr, 0, 0);
 	ft_put_string_to_window(fdf);
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 15, 6, 0xFFFFFF, 
+			"_____________________ USEFUL HOTKEYS _______________________");
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 15, 253, 0xFFFFFF,
+			"____________________________________________________________");
 }
