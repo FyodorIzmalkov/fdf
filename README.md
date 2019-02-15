@@ -13,6 +13,7 @@ a parameter to the program. You can check out any maps that in the map folder.
 - you can change altitude parameter of all pixels
 - you can draw a line with two right clicks
 - you'll see all hotkeys when you'll run the program
+- it could be closed either by pressing "esc" button or with the red cross
 ## Usage:
 Just run make, and then ./fdf map_name
 # Some screens:
