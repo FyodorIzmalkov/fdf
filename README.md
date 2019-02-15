@@ -12,6 +12,7 @@ a parameter to the program. You can check out any maps that in the map folder.
 - it has 4 projection types
 - you can change altitude parameter of all pixels
 - you can draw a line with two right clicks
+- you'll see all hotkeys when you'll run the program
 ## Usage:
 Just run make, and then ./fdf map_name
 # Some screens:
