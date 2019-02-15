@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 20:49:21 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/15 14:43:05 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:03:32 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_calculate_angles(t_fdf *fdf)
 	fdf->res.cosz = cos(fdf->angle.z);
 }
 
-int	ft_red_cross(void *param)
+int		ft_red_cross(void *param)
 {
 	(void)param;
 	exit(0);
@@ -58,9 +58,9 @@ int	ft_red_cross(void *param)
 
 void	ft_draw_with_rmb(int x, int y, t_fdf *fdf)
 {
-	t_line dat;
-	t_pixel f;
-	t_pixel s;
+	t_line	dat;
+	t_pixel	f;
+	t_pixel	s;
 
 	if (fdf->mouse.draw_button == 0)
 	{

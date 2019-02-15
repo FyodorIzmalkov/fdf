@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/08 15:30:16 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:39:40 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:04:43 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ static	void	ft_key_press2(int keycode, t_fdf *fdf)
 	keycode == 78 ? fdf->options->altitude -= 1 : 0;
 }
 
-int	ft_key_press(int keycode, t_fdf *fdf)
+int				ft_key_press(int keycode, t_fdf *fdf)
 {
 	ft_clear_image(fdf->image);
-	keycode == 53 ? exit (0) : 0;
+	keycode == 53 ? exit(0) : 0;
 	if (keycode == 48)
 	{
 		fdf->color_changer == 10 ? fdf->color_changer = 0 : 0;
@@ -64,7 +64,7 @@ int	ft_key_press(int keycode, t_fdf *fdf)
 	return (0);
 }
 
-int	ft_mouse_press(int button,int x, int y, t_fdf *fdf)
+int				ft_mouse_press(int button, int x, int y, t_fdf *fdf)
 {
 	ft_clear_image(fdf->image);
 	if (x >= 0 && x <= W_WIDTH && y >= 0 && y <= W_HEIGHT)
@@ -85,8 +85,8 @@ int	ft_mouse_press(int button,int x, int y, t_fdf *fdf)
 	return (0);
 }
 
-int	ft_mouse_release(int button, int x, int y, t_fdf *fdf)
-{	
+int				ft_mouse_release(int button, int x, int y, t_fdf *fdf)
+{
 	(void)button;
 	(void)x;
 	(void)y;
@@ -94,7 +94,7 @@ int	ft_mouse_release(int button, int x, int y, t_fdf *fdf)
 	return (0);
 }
 
-int	ft_mouse_move(int x, int y, t_fdf *fdf)
+int				ft_mouse_move(int x, int y, t_fdf *fdf)
 {
 	ft_clear_image(fdf->image);
 	if (x >= 0 && x <= W_WIDTH && y >= 0 && y <= W_HEIGHT)

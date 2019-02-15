@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 23:22:38 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/15 14:40:51 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:02:36 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,21 @@ static	t_list	*ft_get_lines(t_list **lst, int width)
 	x.i = 1;
 	x.list = *lst;
 	x.part = NULL;
-	x.size = sizeof(t_line);
 	while (x.list)
 	{
 		x.l.a = x.list->content;
 		if ((x.scnd = ft_lst_n(x.list, width)))
 		{
 			x.l.b = x.scnd->content;
-			ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size)), 3);
-			ft_lstadd(&x.part, x.temp);
+			ft_display_error(!(x.tmp = ft_lstnew(&x.l, sizeof(t_line))), 3);
+			ft_lstadd(&x.part, x.tmp);
 		}
 		if (x.i % width != 0)
 			if ((x.scnd = ft_lst_n(x.list, 1)))
 			{
 				x.l.b = x.scnd->content;
-				ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size)), 3);
-				ft_lstadd(&x.part, x.temp);
+				ft_display_error(!(x.tmp = ft_lstnew(&x.l, sizeof(t_line))), 3);
+				ft_lstadd(&x.part, x.tmp);
 			}
 		x.i++;
 		x.list = x.list->next;
@@ -44,10 +43,10 @@ static	t_list	*ft_get_lines(t_list **lst, int width)
 
 static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
 {
-	int x;
-	t_pixel pixel;
-	t_list *tmp;
-	size_t struct_size;
+	int		x;
+	t_pixel	pixel;
+	t_list	*tmp;
+	size_t	struct_size;
 
 	struct_size = sizeof(t_pixel);
 	x = -1;
@@ -65,19 +64,19 @@ static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
 	}
 }
 
-static	int	ft_count_width(char **line_args)
+static	int		ft_count_width(char **line_args)
 {
-	int i;
+	int	i;
 
 	while (line_args[i])
 		i++;
 	return (i);
 }
 
-void	ft_read_map(int fd, t_list **lst, t_fdf *fdf)
+void			ft_read_map(int fd, t_list **lst, t_fdf *fdf)
 {
-	char *gnl;
-	char **line_args;
+	char	*gnl;
+	char	**line_args;
 
 	while (get_next_line(fd, &gnl) > 0)
 	{

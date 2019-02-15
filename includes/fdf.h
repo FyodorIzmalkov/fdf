@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/15 14:41:01 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:02:08 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include "libft.h"
 # define W_WIDTH 2560
 # define W_HEIGHT 1300
-# define ABS(x) ((x) < 0 ? -(x) : (x))
+
 typedef struct	s_putline
 {
 	int dx;
@@ -81,8 +81,7 @@ typedef struct s_part
 	t_list	*part;
 	t_list	*scnd;
 	t_list	*list;
-	t_list	*temp;
-	size_t size;
+	t_list	*tmp;
 	int 	i;
 }				t_part;
 

@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/07 17:55:20 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/15 14:20:48 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 17:08:32 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ static	void	ft_put_line_high(t_pixel p0, t_pixel p1, t_fdf *fdf)
 	}
 }
 
-static void	ft_put_line(t_fdf *fdf)
+static void		ft_put_line(t_fdf *fdf)
 {
 	int tmpy;
 	int tmpx;
-	
+
 	tmpy = fdf->second.y - fdf->first.y;
 	if (tmpy < 0)
 		tmpy = -tmpy;
@@ -85,13 +85,15 @@ static void	ft_put_line(t_fdf *fdf)
 		else
 			ft_put_line_low(fdf->first, fdf->second, fdf);
 	else
+	{
 		if (fdf->first.y > fdf->second.y)
 			ft_put_line_high(fdf->second, fdf->first, fdf);
 		else
 			ft_put_line_high(fdf->first, fdf->second, fdf);
+	}
 }
 
-static void	ft_set_color(t_fdf *fdf, int color)
+static void		ft_set_color(t_fdf *fdf, int color)
 {
 	double third;
 
@@ -116,7 +118,7 @@ static void	ft_set_color(t_fdf *fdf, int color)
 	fdf->second.z /= fdf->decreaser;
 }
 
-void	ft_print_map(t_fdf fdf)
+void			ft_print_map(t_fdf fdf)
 {
 	ft_change_color(&fdf);
 	ft_calculate_angles(&fdf);
@@ -125,7 +127,7 @@ void	ft_print_map(t_fdf fdf)
 		fdf.first = *((t_line *)fdf.lines->content)->b;
 		fdf.second = *((t_line *)fdf.lines->content)->a;
 		ft_set_color(&fdf, fdf.color);
-		ft_rotate_dots(&fdf.first, fdf.res,  &fdf);
+		ft_rotate_dots(&fdf.first, fdf.res, &fdf);
 		ft_rotate_dots(&fdf.second, fdf.res, &fdf);
 		ft_put_line(&fdf);
 		fdf.lines = fdf.lines->next;
@@ -139,7 +141,7 @@ void	ft_print_map(t_fdf fdf)
 	}
 	mlx_put_image_to_window(fdf.mlx_ptr, fdf.win_ptr, fdf.image->img_ptr, 0, 0);
 	ft_put_string_to_window(fdf);
-	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 15, 6, 0xFFFFFF, 
+	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 15, 6, 0xFFFFFF,
 			"_____________________ USEFUL HOTKEYS _______________________");
 	mlx_string_put(fdf.mlx_ptr, fdf.win_ptr, 15, 253, 0xFFFFFF,
 			"____________________________________________________________");

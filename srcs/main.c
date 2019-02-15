@@ -2,12 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-
 /*                                                    +:+ +:+         +:+     */
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/02/06 18:42:05 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/06 23:22:30 by lsandor-         ###   ########.fr       */
+/*   Created: 2019/02/15 16:57:57 by lsandor-          #+#    #+#             */
+/*   Updated: 2019/02/15 16:58:10 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +14,8 @@
 
 int	main(int argc, char **argv)
 {
-	int	fd;
-	t_list *lst;
+	int		fd;
+	t_list	*lst;
 	t_fdf	fdf;
 
 	ft_display_error(argc != 2, 1);
