@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 23:22:38 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 22:35:44 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:40:51 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,21 @@ static	t_list	*ft_get_lines(t_list **lst, int width)
 	x.i = 1;
 	x.list = *lst;
 	x.part = NULL;
-	x.size_of_line = sizeof(t_line);
+	x.size = sizeof(t_line);
 	while (x.list)
 	{
 		x.l.a = x.list->content;
 		if ((x.scnd = ft_lst_n(x.list, width)))
 		{
 			x.l.b = x.scnd->content;
-			ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size_of_line)), MlcErr);
+			ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size)), 3);
 			ft_lstadd(&x.part, x.temp);
 		}
 		if (x.i % width != 0)
 			if ((x.scnd = ft_lst_n(x.list, 1)))
 			{
 				x.l.b = x.scnd->content;
-				ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size_of_line)), MlcErr);
+				ft_display_error(!(x.temp = ft_lstnew(&x.l, x.size)), 3);
 				ft_lstadd(&x.part, x.temp);
 			}
 		x.i++;
@@ -58,9 +58,9 @@ static	void	ft_save_coordinats(char **args, t_list **lst, int y, t_fdf *fdf)
 		pixel.z = ft_atoi(args[x]);
 		if (pixel.z > fdf->options->max)
 			fdf->options->max = pixel.z;
-		if (pixel.z < fdf->options->min)
+		else if (pixel.z < fdf->options->min)
 			fdf->options->min = pixel.z;
-		ft_display_error(!(tmp = ft_lstnew(&pixel, struct_size)), MlcErr);
+		ft_display_error(!(tmp = ft_lstnew(&pixel, struct_size)), 3);
 		ft_lstadd(lst, tmp);
 	}
 }
@@ -81,10 +81,10 @@ void	ft_read_map(int fd, t_list **lst, t_fdf *fdf)
 
 	while (get_next_line(fd, &gnl) > 0)
 	{
-		ft_display_error(!(line_args = ft_strsplit(gnl, ' ')), MlcErr);
+		ft_display_error(!(line_args = ft_strsplit(gnl, ' ')), 3);
 		if (fdf->col == -1)
 			fdf->col = ft_count_width(line_args);
-		ft_display_error((fdf->col != ft_count_width(line_args)), MapError);
+		ft_display_error((fdf->col != ft_count_width(line_args)), 4);
 		ft_save_coordinats(line_args, lst, fdf->row, fdf);
 		ft_free_args(&line_args, fdf->col);
 		fdf->row++;

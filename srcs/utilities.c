@@ -6,17 +6,24 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 20:49:21 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 21:50:24 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:43:05 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	ft_display_error(int condition, char *str)
+void	ft_display_error(int condition, int i)
 {
 	if (condition)
 	{
-		ft_putendl(str);
+		if (i == 1)
+			ft_putendl("Error. Usage: ./fdf filename");
+		else if (i == 2)
+			ft_putendl("Error. Invalid file name.");
+		else if (i == 3)
+			ft_putendl("Error. Malloc allocation failed.");
+		else if (i == 4)
+			ft_putendl("Error. Map is invalid.");
 		exit(EXIT_FAILURE);
 	}
 }
@@ -69,8 +76,7 @@ void	ft_draw_with_rmb(int x, int y, t_fdf *fdf)
 	s.y = y;
 	dat.a = &f;
 	dat.b = &s;
-	ft_display_error(!(fdf->drawn = ft_lstnew(&dat, sizeof(t_line))),
-			"Error. Malloc allocation failed.");
+	ft_display_error(!(fdf->drawn = ft_lstnew(&dat, sizeof(t_line))), 3);
 	ft_print_map(*fdf);
 	free(fdf->drawn);
 	fdf->drawn = NULL;

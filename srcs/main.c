@@ -19,9 +19,9 @@ int	main(int argc, char **argv)
 	t_list *lst;
 	t_fdf	fdf;
 
-	ft_display_error(argc != 2, "Error. Usage: ./fdf filename");
+	ft_display_error(argc != 2, 1);
 	fd = open(argv[1], O_RDONLY);
-	ft_display_error((fd < 0), "Error. Invalid file name.");
+	ft_display_error((fd < 0), 2);
 	ft_initialize_fdf(&fdf);
 	ft_read_map(fd, &lst, &fdf);
 	fdf.mlx_ptr = mlx_init();

@@ -6,7 +6,7 @@
 /*   By: lsandor- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/06 18:42:45 by lsandor-          #+#    #+#             */
-/*   Updated: 2019/02/14 23:57:24 by lsandor-         ###   ########.fr       */
+/*   Updated: 2019/02/15 14:41:01 by lsandor-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@
 # define W_WIDTH 2560
 # define W_HEIGHT 1300
 # define ABS(x) ((x) < 0 ? -(x) : (x))
-# define MlcErr "Error. Malloc alocation failed."
-# define MapError "Error. Map is invalid."
 typedef struct	s_putline
 {
 	int dx;
@@ -84,7 +82,7 @@ typedef struct s_part
 	t_list	*scnd;
 	t_list	*list;
 	t_list	*temp;
-	size_t size_of_line;
+	size_t size;
 	int 	i;
 }				t_part;
 
@@ -139,7 +137,7 @@ typedef struct	s_fdf
 
 
 // utilities.c
-void	ft_display_error(int condition, char *str);
+void	ft_display_error(int condition, int i);
 void	ft_free_args(char ***args, int i);
 void	ft_calculate_angles(t_fdf *fdf);
 int		ft_red_cross(void *param);
